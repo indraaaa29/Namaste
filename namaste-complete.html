@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NAMASTE - Every Bite is a Welcome. Premium street-food café in Rajarhat, Kolkata. Order online with delivery!">
+    <meta name="keywords" content="NAMASTE, restaurant, Rajarhat, Kolkata, momos, maggi, street food, cafe, food delivery, online order">
+    <meta name="author" content="NAMASTE Restaurant">
+    <title>NAMASTE - Every Bite is a Welcome | Order Online</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #F7931E;
+            --accent-color: #C17C48;
+            --dark-brown: #6B4423;
+            --cream: #FFF8E7;
+            --gold: #D4AF37;
+            --light-cream: #FFFDF7;
+            --text-dark: #2C1810;
+            --shadow: rgba(107, 68, 35, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-cream);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFF5E1 100%);
+            box-shadow: 0 4px 20px var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 248, 231, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Cart Icon in Navbar */
+        .cart-icon-nav {
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .cart-icon-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .cart-count-badge {
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section - keeping existing styles */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(rgba(44, 24, 16, 0.5), rgba(107, 68, 35, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23C17C48" width="1200" height="800"/><text x="50%25" y="50%25" font-size="120" fill="%23FFFFFF" opacity="0.1" text-anchor="middle" dominant-baseline="middle" font-family="Arial">🍜🥟🍲</text></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo img {
+            height: 150px;
+            width: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            letter-spacing: 5px;
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        /* Menu Categories */
+        .menu-categories {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .category {
+            animation: fadeIn 0.6s ease;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-brown);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .item-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-note {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .item-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .add-to-cart-btn {
+            margin-top: auto;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Option Selection Modal */
+        .option-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option-modal.active {
+            display: flex;
+        }
+
+        .option-modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .option-modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .option-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .option-modal-subtitle {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
+
+        .option-choices {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-choice {
+            background: var(--cream);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-choice:hover {
+            border-color: var(--primary-color);
+            background: var(--light-cream);
+        }
+
+        .option-choice.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: var(--dark-brown);
+        }
+
+        .option-price {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .option-modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .option-modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option-confirm-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .option-confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .option-cancel-btn {
+            background: #e0e0e0;
+            color: var(--dark-brown);
+        }
+
+        .option-cancel-btn:hover {
+            background: #d0d0d0;
+        }
+
+        /* Checkout Form Modal */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 3500;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .checkout-modal.active {
+            display: flex;
+        }
+
+        .checkout-modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 550px;
+            width: 90%;
+            margin: 2rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .checkout-modal-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .checkout-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-modal-subtitle {
+            color: var(--accent-color);
+        }
+
+        .checkout-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .checkout-form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .delivery-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .delivery-option {
+            background: var(--cream);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delivery-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .delivery-option.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+        }
+
+        .delivery-option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .delivery-option-title {
+            font-weight: 600;
+            color: var(--dark-brown);
+            font-size: 1.1rem;
+        }
+
+        .delivery-option-price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .delivery-option-desc {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .checkout-summary {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .checkout-summary-row.total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding-top: 1rem;
+            border-top: 2px solid var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        .checkout-summary-label {
+            color: var(--dark-brown);
+        }
+
+        .checkout-summary-value {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .checkout-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .checkout-btn {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .checkout-confirm-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-confirm-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .checkout-confirm-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-back-btn {
+            background: #e0e0e0;
+            color: var(--dark-brown);
+        }
+
+        .checkout-back-btn:hover {
+            background: #d0d0d0;
+        }
+
+        /* Cart Sidebar - keeping existing styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+        }
+
+        .close-cart-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-cart-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-variant {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .qty-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .cart-item-qty {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-item-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item-btn:hover {
+            background: #ff3838;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--accent-color);
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-footer {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cart-total-label {
+            color: var(--dark-brown);
+        }
+
+        .cart-total-amount {
+            color: var(--primary-color);
+        }
+
+        .proceed-checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .proceed-checkout-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .proceed-checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Cart Overlay */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        /* Footer - keeping existing styles */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-brown), var(--accent-color));
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .call-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--cream);
+                width: 100%;
+                text-align: center;
+                padding: 2rem;
+                box-shadow: 0 10px 30px var(--shadow);
+                transition: right 0.3s ease;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-logo img {
+                height: 100px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .menu-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .cart-sidebar.active {
+                right: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-logo img {
+                height: 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .checkout-modal-content {
+                padding: 2rem;
+            }
+
+            .option-modal-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Page Visibility */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* About and Contact Pages - keeping existing styles */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            background: var(--light-cream);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-brown);
+        }
+
+        .contact-details p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 968px) {
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="namaste-logo.jpg" alt="NAMASTE Logo">
+                <span class="logo-text">NAMASTE</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#menu" class="nav-link" onclick="showPage('menu')">Menu</a></li>
+                <li><a href="#about" class="nav-link" onclick="showPage('about')">About</a></li>
+                <li><a href="#contact" class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                <li>
+                    <div class="cart-icon-nav" onclick="toggleCart()">
+                        🛒 Cart
+                        <span class="cart-count-badge" id="cartCountNav">0</span>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="namaste-logo.jpg" alt="NAMASTE Logo">
+                </div>
+                <h1>NAMASTE</h1>
+                <p class="hero-tagline">Every Bite is a Welcome</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('menu')">
+                        <span>🍽️</span> View Menu
+                    </button>
+                    <button class="btn btn-primary" onclick="toggleCart()">
+                        <span>🛒</span> View Cart
+                    </button>
+                    <a href="tel:+919051219739" class="btn btn-outline">
+                        <span>📞</span> Call Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Highlights -->
+        <section class="section">
+            <h2 class="section-title">Why Choose NAMASTE?</h2>
+            <p class="section-subtitle">Experience the perfect blend of taste and tradition</p>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">🍜</div>
+                    <div class="item-name" style="text-align: center;">Authentic Flavors</div>
+                    <p style="text-align: center; color: var(--accent-color); margin-top: 0.5rem;">
+                        Every dish crafted with love and authentic spices
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">⚡</div>
+                    <div class="item-name" style="text-align: center;">Fast Service</div>
+                    <p style="text-align: center; color: var(--accent-color); margin-top: 0.5rem;">
+                        Quick preparation without compromising quality
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">💰</div>
+                    <div class="item-name" style="text-align: center;">Affordable Prices</div>
+                    <p style="text-align: center; color: var(--accent-color); margin-top: 0.5rem;">
+                        Delicious food that doesn't break the bank
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">🚚</div>
+                    <div class="item-name" style="text-align: center;">Home Delivery</div>
+                    <p style="text-align: center; color: var(--accent-color); margin-top: 0.5rem;">
+                        Convenient delivery right to your doorstep
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Menu Page -->
+    <div id="menu" class="page">
+        <div style="margin-top: 100px;"></div>
+        <section class="section">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Choose your favorites and add to cart</p>
+
+            <div class="menu-categories" id="menuContent"></div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div style="margin-top: 100px;"></div>
+        <section class="section">
+            <h2 class="section-title">About NAMASTE</h2>
+            <p class="section-subtitle">Where every bite welcomes you home</p>
+
+            <div class="about-content">
+                <div class="about-image">🍲</div>
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>
+                        Welcome to NAMASTE, where we believe that every bite should be a warm welcome. Located in the heart of Rajarhat, Kolkata, we've been serving authentic, delicious food that brings people together.
+                    </p>
+                    <p>
+                        Our mission is simple: to provide high-quality, flavorful meals at affordable prices. From our famous momos to our hearty rice combos, every dish is prepared with fresh ingredients and lots of love.
+                    </p>
+                    <h3>Our Promise</h3>
+                    <p>
+                        At NAMASTE, we're committed to maintaining the highest standards of food quality and hygiene. We use only fresh ingredients and traditional cooking methods to ensure every meal is both delicious and memorable.
+                    </p>
+                    <p>
+                        Whether you're craving a quick snack or a full meal, our diverse menu has something for everyone. We take pride in being your go-to spot for comfort food in the neighborhood.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div style="margin-top: 100px;"></div>
+        <section class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Visit Us</h4>
+                            <p>BC-5, Samarpally, Krishnapur<br>Rajarhat, Kolkata<br>West Bengal 700102</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>
+                                <a href="tel:+919051219739">+91 9051219739</a><br>
+                                <a href="tel:+918777518998">+91 8777518998</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>
+                                <a href="https://wa.me/919051219739" target="_blank">Message us for orders</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h4>Opening Hours</h4>
+                            <p>Monday - Sunday<br>9:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d465.09877422026826!2d88.43223124988668!3d22.592826379348735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDM1JzM0LjIiTiA4OMKwMjUnNTguNCJF!5e1!3m2!1sen!2sin!4v1707318000000!5m2!1sen!2sin"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="namaste-logo.jpg" alt="NAMASTE Logo" style="height: 80px; margin-bottom: 1rem; border-radius: 10px;">
+                <h3>NAMASTE</h3>
+                <p>Every Bite is a Welcome</p>
+                <p style="margin-top: 1rem;">Premium street-food café serving authentic flavors with love.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#home" onclick="showPage('home')">Home</a></p>
+                <p><a href="#menu" onclick="showPage('menu')">Menu</a></p>
+                <p><a href="#about" onclick="showPage('about')">About</a></p>
+                <p><a href="#contact" onclick="showPage('contact')">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 BC-5, Samarpally, Krishnapur<br>Rajarhat, Kolkata - 700102</p>
+                <p>📞 +91 9051219739<br>📞 +91 8777518998</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NAMASTE Restaurant. All rights reserved. | Designed with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>🛒 Your Cart</h2>
+            <button class="close-cart-btn" onclick="toggleCart()">×</button>
+        </div>
+
+        <div class="cart-items-container" id="cartItemsContainer">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">🛒</div>
+                <p>Your cart is empty</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Add items from the menu to get started!</p>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Subtotal:</span>
+                <span class="cart-total-amount" id="cartTotalAmount">₹0</span>
+            </div>
+            <button class="proceed-checkout-btn" id="proceedCheckoutBtn" onclick="openCheckoutModal()" disabled>
+                <span>📋</span> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Option Selection Modal -->
+    <div class="option-modal" id="optionModal">
+        <div class="option-modal-content">
+            <div class="option-modal-header">
+                <h3 class="option-modal-title" id="optionModalTitle">Select Option</h3>
+                <p class="option-modal-subtitle">Choose your preferred size</p>
+            </div>
+            <div class="option-choices" id="optionChoices"></div>
+            <div class="option-modal-actions">
+                <button class="option-modal-btn option-cancel-btn" onclick="closeOptionModal()">Cancel</button>
+                <button class="option-modal-btn option-confirm-btn" id="optionConfirmBtn" onclick="confirmOption()" disabled>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-modal-content">
+            <div class="checkout-modal-header">
+                <h2 class="checkout-modal-title">Complete Your Order</h2>
+                <p class="checkout-modal-subtitle">Please fill in your details</p>
+            </div>
+
+            <form id="checkoutForm">
+                <div class="checkout-form-group">
+                    <label class="checkout-form-label" for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" class="checkout-form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="checkout-form-group">
+                    <label class="checkout-form-label" for="customerPhone">Phone Number *</label>
+                    <input type="tel" id="customerPhone" class="checkout-form-input" placeholder="+91 XXXXX XXXXX" required pattern="[0-9+\s-]+">
+                </div>
+
+                <div class="checkout-form-group">
+                    <label class="checkout-form-label">Delivery Option *</label>
+                    <div class="delivery-options">
+                        <div class="delivery-option" onclick="selectDelivery('pickup')">
+                            <div class="delivery-option-header">
+                                <span class="delivery-option-title">🏪 Pickup</span>
+                                <span class="delivery-option-price">FREE</span>
+                            </div>
+                            <p class="delivery-option-desc">Self pickup from our restaurant</p>
+                        </div>
+                        <div class="delivery-option" onclick="selectDelivery('delivery')">
+                            <div class="delivery-option-header">
+                                <span class="delivery-option-title">🚚 Home Delivery</span>
+                                <span class="delivery-option-price">₹20</span>
+                            </div>
+                            <p class="delivery-option-desc">Delivered to your doorstep</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-form-group" id="addressGroup" style="display: none;">
+                    <label class="checkout-form-label" for="deliveryAddress">Delivery Address *</label>
+                    <input type="text" id="deliveryAddress" class="checkout-form-input" placeholder="Enter your complete address">
+                </div>
+
+                <div class="checkout-summary">
+                    <div class="checkout-summary-row">
+                        <span class="checkout-summary-label">Subtotal:</span>
+                        <span class="checkout-summary-value" id="checkoutSubtotal">₹0</span>
+                    </div>
+                    <div class="checkout-summary-row">
+                        <span class="checkout-summary-label">Delivery Charge:</span>
+                        <span class="checkout-summary-value" id="checkoutDelivery">₹0</span>
+                    </div>
+                    <div class="checkout-summary-row total">
+                        <span class="checkout-summary-label">Total:</span>
+                        <span class="checkout-summary-value" id="checkoutTotal">₹0</span>
+                    </div>
+                </div>
+
+                <div class="checkout-actions">
+                    <button type="button" class="checkout-btn checkout-back-btn" onclick="closeCheckoutModal()">
+                        ← Back to Cart
+                    </button>
+                    <button type="submit" class="checkout-btn checkout-confirm-btn" id="finalCheckoutBtn">
+                        <span>💬</span> Send Order
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <div class="floating-btn whatsapp-btn" onclick="toggleCart()" title="View Cart">
+            🛒
+        </div>
+        <a href="tel:+919051219739" class="floating-btn call-btn" title="Call Now">
+            📞
+        </a>
+    </div>
+
+    <script>
+        // Menu Data with Options
+        const menuData = {
+            teaCoffee: {
+                icon: '☕',
+                title: 'Tea & Coffee',
+                items: [
+                    { 
+                        name: 'Milk Tea', 
+                        options: [
+                            { label: 'Small', price: 7 },
+                            { label: 'Medium', price: 10 },
+                            { label: 'Large', price: 15 }
+                        ]
+                    },
+                    { name: 'Black Tea', price: 15 },
+                    { name: 'Lemon Tea', price: 15 },
+                    { name: 'Black Coffee', price: 15 },
+                    { name: 'Milk Coffee', price: 20 }
+                ]
+            },
+            momo: {
+                icon: '🥟',
+                title: 'Momo',
+                items: [
+                    { name: 'Veg Corn Momo', price: 50 },
+                    { name: 'Veg Corn Momo Fried', price: 60 },
+                    { name: 'Chicken Momo', price: 50 },
+                    { name: 'Chicken Momo Fried', price: 60 }
+                ]
+            },
+            maggiPasta: {
+                icon: '🍝',
+                title: 'Maggi & Pasta',
+                items: [
+                    { name: 'Veg Maggi', price: 35 },
+                    { name: 'Egg Maggi', price: 50 },
+                    { name: 'Red Sauce Pasta', price: 70 },
+                    { name: 'White Sauce Pasta', price: 80 },
+                    { name: 'Mix Sauce Pasta', price: 90 }
+                ]
+            },
+            snacks: {
+                icon: '🍟',
+                title: 'Snacks',
+                items: [
+                    { name: 'Chicken Pakora (with bone)', price: 25, note: '4 pcs' },
+                    { name: 'Chicken Pakora (boneless)', price: 40, note: '4 pcs' },
+                    { name: 'French Fries', price: 40 },
+                    { name: 'Fish Finger (Vetki)', price: 30 },
+                    { name: 'Fish Fry (Vetki)', price: 80 },
+                    { name: 'Prawn Chips', price: 20 },
+                    { name: 'Chilly Potato', price: 60 }
+                ]
+            },
+            lassiRefreshment: {
+                icon: '🥤',
+                title: 'Lassi & Refreshment',
+                items: [
+                    { 
+                        name: 'Plain Lassi', 
+                        options: [
+                            { label: 'Small', price: 40 },
+                            { label: 'Large', price: 60 }
+                        ]
+                    },
+                    { 
+                        name: 'Chocolate Lassi', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Mango Lassi', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Masala Cold Drinks', 
+                        options: [
+                            { label: 'Small', price: 40 },
+                            { label: 'Large', price: 60 }
+                        ]
+                    },
+                    { 
+                        name: 'Fresh Lime Soda', 
+                        options: [
+                            { label: 'Small', price: 40 },
+                            { label: 'Large', price: 60 }
+                        ]
+                    },
+                    { 
+                        name: 'Green Mango Soda', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Blue Lagoon Mojito', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    }
+                ]
+            },
+            milkShake: {
+                icon: '🥤',
+                title: 'Milk Shake',
+                items: [
+                    { 
+                        name: 'Vanilla Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Strawberry Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Mango Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Chocolate Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Butterscotch Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Pineapple Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Black Current Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Orange Shake', 
+                        options: [
+                            { label: 'Small', price: 50 },
+                            { label: 'Large', price: 70 }
+                        ]
+                    },
+                    { 
+                        name: 'Oreo Shake', 
+                        options: [
+                            { label: 'Small', price: 60 },
+                            { label: 'Large', price: 80 }
+                        ]
+                    },
+                    { 
+                        name: 'KitKat Shake', 
+                        options: [
+                            { label: 'Small', price: 60 },
+                            { label: 'Large', price: 80 }
+                        ]
+                    }
+                ]
+            },
+            iceCream: {
+                icon: '🍨',
+                title: 'Ice Cream',
+                items: [
+                    { 
+                        name: 'Vanilla', 
+                        options: [
+                            { label: 'Single', price: 20 },
+                            { label: 'Double', price: 35 }
+                        ]
+                    },
+                    { 
+                        name: 'Two in One', 
+                        options: [
+                            { label: 'Single', price: 20 },
+                            { label: 'Double', price: 35 }
+                        ]
+                    },
+                    { 
+                        name: 'Chocolate', 
+                        options: [
+                            { label: 'Single', price: 25 },
+                            { label: 'Double', price: 40 }
+                        ]
+                    },
+                    { 
+                        name: 'Mango', 
+                        options: [
+                            { label: 'Single', price: 25 },
+                            { label: 'Double', price: 40 }
+                        ]
+                    },
+                    { 
+                        name: 'Butterscotch', 
+                        options: [
+                            { label: 'Single', price: 30 },
+                            { label: 'Double', price: 50 }
+                        ]
+                    },
+                    { 
+                        name: 'Black Current', 
+                        options: [
+                            { label: 'Single', price: 30 },
+                            { label: 'Double', price: 50 }
+                        ]
+                    },
+                    { 
+                        name: 'Nolen Gur', 
+                        options: [
+                            { label: 'Single', price: 30 },
+                            { label: 'Double', price: 50 }
+                        ]
+                    },
+                    { 
+                        name: 'Kesar Pista', 
+                        options: [
+                            { label: 'Single', price: 40 },
+                            { label: 'Double', price: 70 }
+                        ]
+                    }
+                ]
+            },
+            sabji: {
+                icon: '🍛',
+                title: 'Sabji Items',
+                items: [
+                    { 
+                        name: 'Aloo Dum', 
+                        options: [
+                            { label: '2 pcs', price: 25 },
+                            { label: '4 pcs', price: 40 }
+                        ]
+                    },
+                    { 
+                        name: 'Chicken Kosha', 
+                        options: [
+                            { label: '2 pcs', price: 50 },
+                            { label: '4 pcs', price: 90 }
+                        ]
+                    },
+                    { 
+                        name: 'Chilly Chicken', 
+                        options: [
+                            { label: '3 pcs', price: 40 },
+                            { label: '6 pcs', price: 80 }
+                        ]
+                    },
+                    { 
+                        name: 'Veg Tadka', 
+                        options: [
+                            { label: 'Half', price: 35 },
+                            { label: 'Full', price: 50 }
+                        ]
+                    },
+                    { 
+                        name: 'Egg Tadka', 
+                        options: [
+                            { label: 'Half', price: 40 },
+                            { label: 'Full', price: 60 }
+                        ]
+                    },
+                    { 
+                        name: 'Paneer', 
+                        options: [
+                            { label: 'Half', price: 50 },
+                            { label: 'Full', price: 80 }
+                        ]
+                    },
+                    { 
+                        name: 'Channa Masala', 
+                        options: [
+                            { label: 'Half', price: 40 },
+                            { label: 'Full', price: 60 }
+                        ]
+                    },
+                    { 
+                        name: 'Mix Veg', 
+                        options: [
+                            { label: 'Half', price: 50 },
+                            { label: 'Full', price: 80 }
+                        ]
+                    }
+                ]
+            },
+            rice: {
+                icon: '🍚',
+                title: 'Rice Items',
+                items: [
+                    { 
+                        name: 'Plain Basmati Rice', 
+                        options: [
+                            { label: 'Half', price: 20 },
+                            { label: 'Full', price: 30 }
+                        ]
+                    },
+                    { name: 'Polau', price: 60 },
+                    { name: 'Fried Rice', price: 60 },
+                    { name: 'Egg Fried Rice', price: 70 },
+                    { name: 'Chicken Fried Rice', price: 90 }
+                ]
+            },
+            rotiParatha: {
+                icon: '🫓',
+                title: 'Roti & Paratha',
+                items: [
+                    { name: 'Plain Roti', price: 5 },
+                    { name: 'Butter Roti', price: 10 },
+                    { name: 'Plain Paratha', price: 10 },
+                    { name: 'Aloo Paratha', price: 30 },
+                    { name: 'Paneer Paratha', price: 40 }
+                ]
+            },
+            combo: {
+                icon: '🍱',
+                title: 'Combo Meals',
+                items: [
+                    { name: 'Plain Rice (Basmati) + Chicken Kosha (2 pcs) + Salad', price: 70, badge: 'Popular' },
+                    { name: 'Polau + Chicken Kosha + Salad (2 pcs)', price: 95, badge: 'Popular' },
+                    { name: 'Polau + Aloo Dum + Salad (2 pcs)', price: 75 },
+                    { name: 'Fried Rice + Chicken Kosha + Salad (2 pcs)', price: 95 },
+                    { name: 'Fried Rice + Paneer Butter Masala + Salad', price: 95 },
+                    { name: 'Fried Rice + Aloo Dum + Salad (2 pcs)', price: 70 }
+                ]
+            },
+            addons: {
+                icon: '➕',
+                title: 'Add-ons',
+                items: [
+                    { name: 'Schezwan Sauce', price: 10 },
+                    { name: 'Cheese', price: 25 },
+                    { name: 'Egg', price: 10 },
+                    { name: 'Chicken', price: 30 },
+                    { name: 'Veggies', price: 15 }
+                ]
+            }
+        };
+
+        // Shopping Cart and State
+        let cart = [];
+        let currentItemForOption = null;
+        let selectedOption = null;
+        let deliveryType = null;
+        let deliveryCharge = 0;
+
+        // Render Menu
+        function renderMenu() {
+            const menuContent = document.getElementById('menuContent');
+            let html = '';
+
+            for (const [key, category] of Object.entries(menuData)) {
+                html += `
+                    <div class="category">
+                        <div class="category-header">
+                            <span class="category-icon">${category.icon}</span>
+                            <h3 class="category-title">${category.title}</h3>
+                        </div>
+                        <div class="menu-items">
+                            ${category.items.map((item, index) => {
+                                const hasOptions = item.options && item.options.length > 0;
+                                const displayPrice = hasOptions 
+                                    ? `₹${item.options[0].price}-${item.options[item.options.length-1].price}`
+                                    : `₹${item.price}`;
+                                const priceNote = hasOptions 
+                                    ? item.options.map(opt => opt.label).join(' / ')
+                                    : '';
+                                
+                                return `
+                                    <div class="menu-item">
+                                        <div class="item-name">${item.name}</div>
+                                        <div class="item-price">${displayPrice}</div>
+                                        ${priceNote ? `<div class="item-note">${priceNote}</div>` : ''}
+                                        ${item.note ? `<div class="item-note">${item.note}</div>` : ''}
+                                        ${item.badge ? `<span class="item-badge">${item.badge}</span>` : ''}
+                                        <button class="add-to-cart-btn" onclick='handleAddToCart(${JSON.stringify(item)})'>
+                                            ➕ Add to Cart
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            menuContent.innerHTML = html;
+        }
+
+        // Handle Add to Cart Click
+        function handleAddToCart(item) {
+            if (item.options && item.options.length > 0) {
+                // Show option modal
+                showOptionModal(item);
+            } else {
+                // Add directly to cart
+                addToCart(item.name, item.price, null);
+            }
+        }
+
+        // Show Option Modal
+        function showOptionModal(item) {
+            currentItemForOption = item;
+            selectedOption = null;
+            
+            const modal = document.getElementById('optionModal');
+            const title = document.getElementById('optionModalTitle');
+            const choices = document.getElementById('optionChoices');
+            const confirmBtn = document.getElementById('optionConfirmBtn');
+            
+            title.textContent = item.name;
+            
+            // Render options
+            choices.innerHTML = item.options.map((option, index) => `
+                <div class="option-choice" onclick="selectOption(${index})">
+                    <span class="option-label">${option.label}</span>
+                    <span class="option-price">₹${option.price}</span>
+                </div>
+            `).join('');
+            
+            confirmBtn.disabled = true;
+            modal.classList.add('active');
+        }
+
+        // Select Option
+        function selectOption(index) {
+            selectedOption = currentItemForOption.options[index];
+            
+            // Update UI
+            document.querySelectorAll('.option-choice').forEach((choice, i) => {
+                if (i === index) {
+                    choice.classList.add('selected');
+                } else {
+                    choice.classList.remove('selected');
+                }
+            });
+            
+            document.getElementById('optionConfirmBtn').disabled = false;
+        }
+
+        // Confirm Option
+        function confirmOption() {
+            if (selectedOption && currentItemForOption) {
+                addToCart(currentItemForOption.name, selectedOption.price, selectedOption.label);
+                closeOptionModal();
+            }
+        }
+
+        // Close Option Modal
+        function closeOptionModal() {
+            document.getElementById('optionModal').classList.remove('active');
+            currentItemForOption = null;
+            selectedOption = null;
+        }
+
+        // Add to Cart
+        function addToCart(name, price, variant) {
+            const cartKey = variant ? `${name} (${variant})` : name;
+            const existingItem = cart.find(item => item.key === cartKey);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    key: cartKey,
+                    name: name,
+                    variant: variant,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showCartNotification();
+        }
+
+        // Update Cart Display
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartCountNav = document.getElementById('cartCountNav');
+            const cartTotalAmount = document.getElementById('cartTotalAmount');
+            const proceedCheckoutBtn = document.getElementById('proceedCheckoutBtn');
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountNav.textContent = totalItems;
+
+            // Calculate total
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalAmount.textContent = `₹${subtotal}`;
+
+            // Update cart items display
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <p>Your cart is empty</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Add items from the menu to get started!</p>
+                    </div>
+                `;
+                proceedCheckoutBtn.disabled = true;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-header">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">${item.name}</div>
+                                ${item.variant ? `<div class="cart-item-variant">${item.variant}</div>` : ''}
+                            </div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="decreaseQuantity('${item.key}')">-</button>
+                                <span class="cart-item-qty">${item.quantity}</span>
+                                <button class="qty-btn" onclick="increaseQuantity('${item.key}')">+</button>
+                            </div>
+                            <button class="remove-item-btn" onclick="removeFromCart('${item.key}')">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+                proceedCheckoutBtn.disabled = false;
+            }
+        }
+
+        // Increase Quantity
+        function increaseQuantity(key) {
+            const item = cart.find(item => item.key === key);
+            if (item) {
+                item.quantity++;
+                updateCart();
+            }
+        }
+
+        // Decrease Quantity
+        function decreaseQuantity(key) {
+            const item = cart.find(item => item.key === key);
+            if (item && item.quantity > 1) {
+                item.quantity--;
+                updateCart();
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(key) {
+            cart = cart.filter(item => item.key !== key);
+            updateCart();
+        }
+
+        // Show Cart Notification
+        function showCartNotification() {
+            const cartIcon = document.querySelector('.cart-icon-nav');
+            cartIcon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartIcon.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Toggle Cart Sidebar
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartOverlay = document.getElementById('cartOverlay');
+            
+            cartSidebar.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+        }
+
+        // Open Checkout Modal
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const modal = document.getElementById('checkoutModal');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            document.getElementById('checkoutSubtotal').textContent = `₹${subtotal}`;
+            document.getElementById('checkoutDelivery').textContent = '₹0';
+            document.getElementById('checkoutTotal').textContent = `₹${subtotal}`;
+            
+            // Reset form
+            document.getElementById('checkoutForm').reset();
+            deliveryType = null;
+            deliveryCharge = 0;
+            document.querySelectorAll('.delivery-option').forEach(opt => opt.classList.remove('selected'));
+            document.getElementById('addressGroup').style.display = 'none';
+            
+            modal.classList.add('active');
+            toggleCart(); // Close cart
+        }
+
+        // Close Checkout Modal
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        // Select Delivery Option
+        function selectDelivery(type) {
+            deliveryType = type;
+            deliveryCharge = type === 'delivery' ? 20 : 0;
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryCharge;
+            
+            document.getElementById('checkoutDelivery').textContent = `₹${deliveryCharge}`;
+            document.getElementById('checkoutTotal').textContent = `₹${total}`;
+            
+            // Update UI
+            document.querySelectorAll('.delivery-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.target.closest('.delivery-option').classList.add('selected');
+            
+            // Show/hide address field
+            const addressGroup = document.getElementById('addressGroup');
+            const addressInput = document.getElementById('deliveryAddress');
+            if (type === 'delivery') {
+                addressGroup.style.display = 'block';
+                addressInput.required = true;
+            } else {
+                addressGroup.style.display = 'none';
+                addressInput.required = false;
+            }
+        }
+
+        // Handle Checkout Form Submit
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('deliveryAddress').value.trim();
+            
+            if (!deliveryType) {
+                alert('Please select a delivery option');
+                return;
+            }
+            
+            if (!name || !phone) {
+                alert('Please fill in your name and phone number');
+                return;
+            }
+            
+            if (deliveryType === 'delivery' && !address) {
+                alert('Please enter your delivery address');
+                return;
+            }
+            
+            sendWhatsAppOrder(name, phone, address);
+        });
+
+        // Send WhatsApp Order
+        function sendWhatsAppOrder(name, phone, address) {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryCharge;
+            
+            // Build WhatsApp message
+            let message = '🍽️ *NAMASTE Order*\n\n';
+            message += '━━━━━━━━━━━━━━━━\n';
+            message += '👤 *Customer Details:*\n';
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `\n${deliveryType === 'delivery' ? '🚚' : '🏪'} *${deliveryType === 'delivery' ? 'Home Delivery' : 'Self Pickup'}*\n`;
+            if (deliveryType === 'delivery') {
+                message += `Address: ${address}\n`;
+            }
+            message += '━━━━━━━━━━━━━━━━\n\n';
+            
+            message += '📋 *Order Items:*\n';
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name}`;
+                if (item.variant) {
+                    message += ` (${item.variant})`;
+                }
+                message += `\n   Qty: ${item.quantity} × ₹${item.price} = ₹${item.price * item.quantity}\n\n`;
+            });
+            
+            message += '━━━━━━━━━━━━━━━━\n';
+            message += `Subtotal: ₹${subtotal}\n`;
+            if (deliveryCharge > 0) {
+                message += `Delivery: ₹${deliveryCharge}\n`;
+            }
+            message += `*Total: ₹${total}*\n`;
+            message += '━━━━━━━━━━━━━━━━\n\n';
+            message += 'Thank you for ordering from NAMASTE! 🙏\n';
+            message += 'We will confirm your order shortly.';
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/919051219739?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Ask to clear cart
+            if (confirm('Your order has been sent to WhatsApp. Would you like to clear your cart?')) {
+                cart = [];
+                updateCart();
+                closeCheckoutModal();
+            } else {
+                closeCheckoutModal();
+            }
+        }
+
+        // Page Navigation
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            document.getElementById(pageName).classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            document.getElementById('navMenu').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize
+        renderMenu();
+        updateCart();
+
+        // Handle navigation clicks
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageName = this.getAttribute('href').substring(1);
+                showPage(pageName);
+            });
+        });
+    </script>
+</body>
+</html>
